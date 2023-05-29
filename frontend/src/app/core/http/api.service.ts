@@ -1,0 +1,52 @@
+import { Injectable } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
+import { Question } from 'src/app/home/interfaces/question.interface';
+import { Quiz } from 'src/app/home/interfaces/quiz.interface';
+import { Subject } from 'rxjs';
+
+@Injectable()
+export class ApiService {
+
+    private questionSelectedSource = new Subject<Question>();
+    questionSelected = this.questionSelectedSource.asObservable();
+
+    constructor(private http: HttpClient) {}
+
+	getQuestions(quizId?: number){
+        return this.http.get<Question[]>(`http://localhost:5001/api/questions?quizId=${quizId || ''}`);
+    }
+
+    postQuestion(question: Question){
+        return this.http.post('http://localhost:5001/api/questions', question);
+    }
+
+    putQuestion(question: Question){
+        this.http.put(`http://localhost:5001/api/questions/${question.id}`, question).subscribe(res => {
+            console.log(res);
+        });
+    }
+
+	getQuizzes(){
+        return this.http.get<Quiz[]>('http://localhost:5001/api/quizzes');
+    }
+
+    getAllQuizzes(){
+        return this.http.get<Quiz[]>('http://localhost:5001/api/quizzes/all');
+    }
+
+
+    postQuiz(quiz: Quiz) {
+        return this.http.post('http://localhost:5001/api/quizzes', quiz);
+    }
+
+	putQuiz(quiz: Quiz){
+        this.http.put(`http://localhost:5001/api/quizzes/${quiz.id}`, quiz).subscribe(res => {
+            console.log(res);
+        });
+    }
+
+    selectQuestion(question: Question)
+    {
+        this.questionSelectedSource.next(question);
+    }
+}

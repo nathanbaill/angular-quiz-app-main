@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span class="clickLink" routerLink="/">Home</span>
+    </mat-toolbar-row> 
+    <mat-toolbar-row *ngIf="auth.isAuthenticated">
+        <span class="clickLink" routerLink="/quizzes">Quizzes</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="!auth.isAuthenticated">
+        <span class="clickLink" routerLink="/register">Register</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="!auth.isAuthenticated">
+        <span class="clickLink" routerLink="/login">Login</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="auth.isAuthenticated">
+        <span class="clickLink" (click)="auth.logout()">Logout</span>
+    </mat-toolbar-row>
+</mat-toolbar>
