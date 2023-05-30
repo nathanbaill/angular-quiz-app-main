@@ -23,7 +23,7 @@ export class AppComponent {
         .subscribe( () => {
           if (this.counter === 0) {
             //add you more code
-            document.location.href=environment.apiUrl+"api/questions";
+            document.location.href=environment.apiUrl+`api/questions`;
           }
 
         } );

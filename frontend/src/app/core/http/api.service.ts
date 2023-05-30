@@ -14,35 +14,35 @@ export class ApiService {
     constructor(private http: HttpClient) {}
 
 	getQuestions(quizId?: number){
-        return this.http.get<Question[]>(environment.apiUrl+`api/questions?quizId=${quizId || ''}`);
+        return this.http.get<Question[]>(environment.apiUrl+`/api/questions?quizId=${quizId || ''}`);
     }
 
     postQuestion(question: Question){
-        return this.http.post(environment.apiUrl+'api/questions', question);
+        return this.http.post(environment.apiUrl+`/api/questions`, question);
 
     }
 
     putQuestion(question: Question){
-        this.http.put(environment.apiUrl+`api/questions/${question.id}`, question).subscribe(res => {
+        this.http.put(environment.apiUrl+`/api/questions/${question.id}`, question).subscribe(res => {
             console.log(res);
         });
     }
 
 	getQuizzes(){
-        return this.http.get<Quiz[]>(environment.apiUrl+'api/quizzes');
+        return this.http.get<Quiz[]>(environment.apiUrl+`/api/quizzes`);
     }
 
     getAllQuizzes(){
-        return this.http.get<Quiz[]>(environment.apiUrl+'api/quizzes/all');
+        return this.http.get<Quiz[]>(environment.apiUrl+`/api/quizzes/all`);
     }
 
 
     postQuiz(quiz: Quiz) {
-        return this.http.post(environment.apiUrl+'api/quizzes', quiz);
+        return this.http.post(environment.apiUrl+`/api/quizzes`, quiz);
     }
 
 	putQuiz(quiz: Quiz){
-        this.http.put(environment.apiUrl+`api/quizzes/${quiz.id}`, quiz).subscribe(res => {
+        this.http.put(environment.apiUrl+`/api/quizzes/${quiz.id}`, quiz).subscribe(res => {
             console.log(res);
         });
     }
