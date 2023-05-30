@@ -22,7 +22,7 @@ export class AppComponent {
         .subscribe( () => {
           if (this.counter === 0) {
             //add you more code
-            document.location.href="http://localhost:4200/play";
+            document.location.href="http://localhost:5001/api/quizzes/all";
           }
 
         } );
