@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Question } from 'src/app/home/interfaces/question.interface';
 import { Quiz } from 'src/app/home/interfaces/quiz.interface';
 import { Subject } from 'rxjs';
+import  { environment} from "../../../environments/environment";
 
 @Injectable()
 export class ApiService {
@@ -13,34 +14,35 @@ export class ApiService {
     constructor(private http: HttpClient) {}
 
 	getQuestions(quizId?: number){
-        return this.http.get<Question[]>(`http://localhost:5001/api/questions?quizId=${quizId || ''}`);
+        return this.http.get<Question[]>(environment.apiUrl+`api/questions?quizId=${quizId || ''}`);
     }
 
     postQuestion(question: Question){
-        return this.http.post('http://localhost:5001/api/questions', question);
+        return this.http.post(environment.apiUrl+'api/questions', question);
+
     }
 
     putQuestion(question: Question){
-        this.http.put(`http://localhost:5001/api/questions/${question.id}`, question).subscribe(res => {
+        this.http.put(environment.apiUrl+`api/questions/${question.id}`, question).subscribe(res => {
             console.log(res);
         });
     }
 
 	getQuizzes(){
-        return this.http.get<Quiz[]>('http://localhost:5001/api/quizzes');
+        return this.http.get<Quiz[]>(environment.apiUrl+'api/quizzes');
     }
 
     getAllQuizzes(){
-        return this.http.get<Quiz[]>('http://localhost:5001/api/quizzes/all');
+        return this.http.get<Quiz[]>(environment.apiUrl+'api/quizzes/all');
     }
 
 
     postQuiz(quiz: Quiz) {
-        return this.http.post('http://localhost:5001/api/quizzes', quiz);
+        return this.http.post(environment.apiUrl+'api/quizzes', quiz);
     }
 
 	putQuiz(quiz: Quiz){
-        this.http.put(`http://localhost:5001/api/quizzes/${quiz.id}`, quiz).subscribe(res => {
+        this.http.put(environment.apiUrl+`api/quizzes/${quiz.id}`, quiz).subscribe(res => {
             console.log(res);
         });
     }

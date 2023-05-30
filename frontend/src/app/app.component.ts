@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {takeWhile, tap, timer} from "rxjs";
+import {environment} from "../environments/environment";
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,7 @@ export class AppComponent {
         .subscribe( () => {
           if (this.counter === 0) {
             //add you more code
-            document.location.href="http://localhost:5001/api/quizzes/all";
+            document.location.href=environment.apiUrl+"api/questions";
           }
 
         } );
