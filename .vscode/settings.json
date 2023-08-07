@@ -1,0 +1,5 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "quiz-backend\\bin\\Release\\netcoreapp3.1\\publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/5cc74831-d886-491c-8c26-2c13839f141a/resourceGroups/angular-quiz-app-main_group/providers/Microsoft.Web/sites/angular-quiz-app-main"
+}
