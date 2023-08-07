@@ -2,3 +2,14 @@
     margin: 0 auto;
     max-width: 960px;
 }
+
+h2 {
+    font-size: 3em;
+    color: red; /* Couleur pour le clignotement */
+    animation: blink 1s linear infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+  }

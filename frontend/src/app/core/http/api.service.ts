@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Question } from 'src/app/home/interfaces/question.interface';
 import { Quiz } from 'src/app/home/interfaces/quiz.interface';
 import { Subject } from 'rxjs';
-import  { environment} from "../../../environments/environment";
+import { environment } from "../../../environments/environment";
 
 @Injectable()
 export class ApiService {

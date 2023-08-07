@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {takeWhile, tap, timer} from "rxjs";
 import {environment} from "../environments/environment";
-
+import { AppModule } from './app.module';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'quiz app';
   counter = 100;
   hasExecuted = false;
@@ -23,7 +23,7 @@ export class AppComponent {
         .subscribe( () => {
           if (this.counter === 0) {
             //add you more code
-            document.location.href=environment.apiUrl+`api/questions`;
+            document.location.href=environment.apiUrl+`/api/questions`;
           }
 
         } );

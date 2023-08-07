@@ -3,7 +3,7 @@ FROM node as builder
 RUN npm install -g @angular/cli
 
 COPY src/ /opt/workspace/src/
-COPY *.json *.js /opt/workspace
+COPY *.json *.js /opt/workspace/
 WORKDIR /opt/workspace
 
 RUN npm install && ng build
